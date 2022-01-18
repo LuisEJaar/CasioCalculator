@@ -58,21 +58,48 @@
 
     for (const numbers of number){ 
         numbers.addEventListener('click', function(e) {
-        console.log(e.target.value);
+        const clickedButton = e.target.value;
+        let val = document.querySelector('input').value;
+        document.getElementById('display').value = `${val}${clickedButton}`;
     });
-    }  
+    };  
 
     plus.addEventListener('click', () => {
+        console.log("clicked plus");
         let val = document.querySelector('input').value;
-        let inputBox = document.querySelector('input');
-        
         console.log(val);
-        console.log(inputBox.attributes);
-
-        document.getElementById('display').value = `${val} +`;    
+        document.getElementById('display').value = `${val} + `;     
+        equal.addEventListener('click', evaluation(val));
     });
 
+    function evaluation (val) {
+        let val2Temp = document.querySelector('input').value;
+        let val2Temp2 = val2Temp.split(/(\s+)/);
+        let val2 = val2Temp2[4];
+        let answer = operator(val,val2,"+")
+        document.getElementById('display').value = `${answer}`;
+        equal.removeEventListener('click', evaluation);
+    };
 
+    function operator(value1,value2, action) {
+        if (action === "+") {
+            let answer = Number(value1) + Number(value2);
+            return answer;
+        } else if (action === "-") {
+            let answer = Number(value1) - Number(value2);
+            return answer;
+        } else if (action === "*") {
+            let answer = Number(value1) * Number(value2);
+            return answer;
+        } else if (action === "/") {
+            let answer = Number(value1) / Number(value2);
+            return answer;
+        };
+    };
+
+    clear.addEventListener('click', () => {
+        document.getElementById('display').value = "";
+    });
 
     //display needs an event listener for the buttons
         //press a button it appears
