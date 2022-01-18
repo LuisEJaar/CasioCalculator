@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculatorBody {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 200px;
+}
+
+.buttons {
+    display: flex;
+    flex-grow: 1;
+    
+    border: 1px;
+    border-color: blue;
+    border-style: solid;
+}
+
+.numbers {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px;
+    border-color: red;
+    border-style: solid;
+}
+
+.oneToNine {
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.zero {
+    display: flex;
+    justify-content: center;
+}
+
+.functions {
+    display: flex;
+    flex-direction: column;
+}
