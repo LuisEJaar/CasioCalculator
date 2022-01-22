@@ -51,11 +51,13 @@
 </body>
 
 <script>
+    function clearPage() {
+        document.getElementById('display').value = "";
+    } 
+    clearPage ();
+
+    
     const text = document.querySelector("#display");
-    //const plus = document.querySelector("#add");
-    //const subtract = document.querySelector("#subtract");
-    //const divide = document.querySelector("#divide");
-    //const multiply = document.querySelector("#multiply");
     const clear = document.querySelector("#clear");
     const equal = document.querySelector("#equal");
     const number = document.querySelectorAll("#number");
@@ -86,9 +88,10 @@
         operatorsB.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
         if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[1],val[2])
+            val[0] = operator(val[0],val[2],val[1]);
             document.getElementById('display').value = `${val[0]}`;
-            console.log("clicked plus 1");
+            val[1] = clickedButton;
+            val[2] = '';
         } else if (val [0] !== '') {
             val[1] = clickedButton;
         };
@@ -101,6 +104,7 @@
             document.getElementById('display').value = `${val[0]}`;
             val[1] = '';
             val[2] = '';
+            console.log(val[0]);
     };
    });
         
@@ -125,17 +129,7 @@
         val[0] = '';
         val[1] = '';
         val[2] = '';
-        val[3] = '';
     });
-
-    //display needs an event listener for the buttons
-        //press a button it appears
-        //functions need to be aple to change display
-        //display could have event listeners for the functions
-        //calls the function and then receives the new thing to display
-        //functions  take whatever is up there and evaluates it first
-        //then takes the new answer and does whatever with it
-        //or the tail end of each function could have an event listener telling it to evaluate and close
 
 </script>
 </html>
