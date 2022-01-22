@@ -73,12 +73,16 @@ body {
     width: 40px;
 }
 
-.functions {
+.functions, .operators {
     display: flex;
     flex-direction: column;
     flex-grow: 0.3;
     justify-content: space-between;
     margin-top: 5px;
-    margin-right: 3px;
-    
+    margin-right: 3px;   
+}
+
+.nonNumbers {
+    display: flex;
+    flex-direction: column;
 }
