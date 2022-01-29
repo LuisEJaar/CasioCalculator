@@ -52,6 +52,14 @@ input {
     text-align: right;
 }
 
+.on {
+    color: black;
+}
+
+.off {
+    color: white;
+}
+
 .row1 {
     display: flex;
     align-items: center;

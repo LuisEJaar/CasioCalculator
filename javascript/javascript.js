@@ -11,8 +11,33 @@ window.onload = function() {
     const operator1 = document.querySelectorAll(".operator");
     const operator2 = document.querySelectorAll(".operator2");
     const memory = document.querySelectorAll(".memory");
+    const power = document.querySelectorAll(".power");
 
     const mem = [''];
+    const val = ['','','',''];
+
+    //Power Buttons
+
+    for (const powerButtons of power) {
+        powerButtons.addEventListener('click', function(e) {
+            const clickedButton = e.target.value;
+            val[0] = '';
+            val[1] = '';
+            val[2] = '';
+            val[3] = '';
+            mem[0] = '';
+            if (clickedButton === 'on') {
+                document.getElementById('display').classList.add('on');
+                document.getElementById('display').classList.remove('off');
+                document.getElementById('display').value = '';
+            } else {
+                document.getElementById('display').classList.add('off');
+                document.getElementById('display').classList.remove('on');
+            };
+        });
+    };
+
+    //memory buttons
 
     for (const memories of memory) {
         memories.addEventListener('click', function(e) {
@@ -45,7 +70,7 @@ window.onload = function() {
         });
     };
 
-    const val = ['','',''];
+   //number buttons
 
     for (const numbers of number){ 
         numbers.addEventListener('click', function(e) {
@@ -69,6 +94,26 @@ window.onload = function() {
         };
     });
     };
+
+    //decimal button
+
+    //operators affecting equation (+, -, /, *)
+
+    for (const operators1 of operator1){ 
+        operators1.addEventListener('click', function(e) {
+        const clickedButton = e.target.value;
+        if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
+            val[0] = operator(val[0],val[2],val[1]);
+            document.getElementById('display').value = `${val[0]}`;
+            val[1] = clickedButton;
+            val[2] = '';
+        } else if (val [0] !== '') {
+            val[1] = clickedButton;
+        };
+        });
+    }; 
+
+    //Operators affecting present button (%, +/-, Square Root)
     
     for (const operators2 of operator2){ 
         operators2.addEventListener('click', function(e) {
@@ -99,19 +144,7 @@ window.onload = function() {
     });
     };
 
-    for (const operators1 of operator1){ 
-        operators1.addEventListener('click', function(e) {
-        const clickedButton = e.target.value;
-        if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[2],val[1]);
-            document.getElementById('display').value = `${val[0]}`;
-            val[1] = clickedButton;
-            val[2] = '';
-        } else if (val [0] !== '') {
-            val[1] = clickedButton;
-        };
-        });
-    };  
+   //Equal sign 
     
    equal.addEventListener('click', ()=> {
     if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
@@ -123,6 +156,8 @@ window.onload = function() {
             console.log(val[0]);
     };
    });
+
+   //Function to evaluate equation
         
     function operator(value1,value2, action) {
         if (action === "+") {
@@ -140,6 +175,8 @@ window.onload = function() {
         };
     };
 
+    //Clear Button
+
     clear.addEventListener('click', () => {
         document.getElementById('display').value = "";
         val[0] = '';
@@ -147,5 +184,4 @@ window.onload = function() {
         val[2] = '';
         val[3] = ''; 
     });
-
 }
