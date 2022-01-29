@@ -1,135 +1,77 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="javascript"  href="javascript/javascript.js">
-</head>
-<body>
-    <div class="calculatorBody">
-        <div class="display">
-            <input type="text" id="display" placeholder="MATH!">
-        </div>
-        <div class="buttons">
-            <div class="numbers">
-                <div class="oneToNine">
-                    <div class="left">
-                        <button id="number" value="7">7</button>
-                        <button id="number" value="4">4</button>
-                        <button id="number" value="1">1</button>
-                    </div>
-                    <div class="middle">
-                        <button id="number" value="8">8</button>
-                        <button id="number" value="5">5</button>
-                        <button id="number" value="2">2</button>
-                    </div>
-                    <div class="right">
-                        <button id="number" value="9">9</button>
-                        <button id="number" value="6">6</button>
-                        <button id="number" value="3">3</button>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <script src="javascript/javascript.js"></script>
+
+        <!--Calculator Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="calculatorBody">
+            <header>
+                <div class="logo">
+                    <h1>CASIO</h1>
+                </div>
+                <div class="power">
+                    <div class="solar"></div>
+                    <div class="jargon">
+                        <span>TWO WAY POWER</span>
                     </div>
                 </div>
-                <div class="zero">
-                    <button  id="number" class="zeroButton" value="0">0</button>
-                </div>
+            </header>
+            <div class="display">
+                <input type="text" id="display" placeholder="MATH!">
             </div>
-            <div class="nonNumbers">
-                <div class="operators">
-                    <button id="operator" value="+">+</button>
-                    <button id="operator" value="-">-</button>
-                    <button id="operator" value="/">/</button>
-                    <button id="operator" value="*">*</button>
+            <div class="buttonArea">
+                <div class="row1">
+                    <div class="modelNumber">SL-300SV</div>
+                    <div class="topButtons">
+                        <button class="operator2" value="square">&#8730</button>
+                        <button id="off">OFF</button>
+                    </div>
                 </div>
-                <div class="functions">
-                    <button id="clear">Clear</button>
-                    <button id="equal">=</button>
-                </div>
+                <div class="rows1to5">
+                    <div class="column">
+                        <button>MC</button>
+                        <button class="operator2" value="percent">%</button>
+                        <button class="operator2" value="signChange">+/-</button>
+                        <button id="clear" class="variant">C</button>
+                        <button class="variant">AC</button>
+                    </div>
+                    <div class="column">
+                        <button>MR</button>
+                        <button class="number" value="7">7</button>
+                        <button class="number" value="4">4</button>
+                        <button class="number" value="1">1</button>
+                        <button class="number" value="0">0</button>
+                    </div>
+                    <div class="column">
+                        <button>M-</button>
+                        <button class="number" value="8">8</button>
+                        <button class="number" value="5">5</button>
+                        <button class="number" value="2">2</button>
+                        <button>.</button>
+                    </div>
+                    <div class="column">
+                        <button>M+</button>
+                        <button class="number" value="9">9</button>
+                        <button class="number" value="6">6</button>
+                        <button class="number" value="3">3</button>
+                        <button id="equal">=</button>
+                    </div>
+                    <div class="column">
+                        <button class="operator" value="/">/</button>
+                        <button class="operator" value="*">x</button>
+                        <button class="operator" value="-">-</button>
+                        <button class="operator plusButton" value="+">+</button>
+                    </div>
+                </div>    
             </div>
         </div>
-    </div>
-    <footer>Brought to you by Luis Jaar</footer>
-</body>
-
-<script>
-    function clearPage() {
-        document.getElementById('display').value = "";
-    } 
-    clearPage ();
-
-    
-    const text = document.querySelector("#display");
-    const clear = document.querySelector("#clear");
-    const equal = document.querySelector("#equal");
-    const number = document.querySelectorAll("#number");
-    const operatorB = document.querySelectorAll("#operator");
-
-    const val = ['','',''];
-
-    for (const numbers of number){ 
-        numbers.addEventListener('click', function(e) {
-        const clickedButton = e.target.value;
-        console.log(val[0]);
-        console.log(val[1]);
-        if (val[1] === '') {
-            let value = document.querySelector('input').value;
-            val[0] = `${value}${clickedButton}`
-            document.getElementById('display').value = `${val[0]}`;
-        } else {
-            document.getElementById('display').value = '';
-            let value = document.querySelector('input').value;
-            val[2] = `${value}${clickedButton}`
-            document.getElementById('display').value = `${val[2]}`;
-            console.log(val[2]);
-        }
-    });
-    };  
-
-    for (const operatorsB of operatorB){ 
-        operatorsB.addEventListener('click', function(e) {
-        const clickedButton = e.target.value;
-        if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[2],val[1]);
-            document.getElementById('display').value = `${val[0]}`;
-            val[1] = clickedButton;
-            val[2] = '';
-        } else if (val [0] !== '') {
-            val[1] = clickedButton;
-        };
-        });
-    };  
-    
-   equal.addEventListener('click', ()=> {
-    if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[2],val[1])
-            document.getElementById('display').value = `${val[0]}`;
-            val[1] = '';
-            val[2] = '';
-            console.log(val[0]);
-    };
-   });
-        
-    function operator(value1,value2, action) {
-        if (action === "+") {
-            let answer = Number(value1) + Number(value2);
-            return answer;
-        } else if (action === "-") {
-            let answer = Number(value1) - Number(value2);
-            return answer;
-        } else if (action === "*") {
-            let answer = Number(value1) * Number(value2);
-            return answer;
-        } else if (action === "/") {
-            let answer = Number(value1) / Number(value2);
-            return answer;
-        };
-    };
-
-    clear.addEventListener('click', () => {
-        document.getElementById('display').value = "";
-        val[0] = '';
-        val[1] = '';
-        val[2] = '';
-    });
-
-</script>
+    </body>
 </html>
