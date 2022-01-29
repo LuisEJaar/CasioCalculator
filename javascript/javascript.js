@@ -8,14 +8,52 @@ window.onload = function() {
     const clear = document.querySelector("#clear");
     const equal = document.querySelector("#equal");
     const number = document.querySelectorAll(".number");
-    const operatorB = document.querySelectorAll(".operator");
+    const operator1 = document.querySelectorAll(".operator");
     const operator2 = document.querySelectorAll(".operator2");
+    const memory = document.querySelectorAll(".memory");
+
+    const mem = [''];
+
+    for (const memories of memory) {
+        memories.addEventListener('click', function(e) {
+            const clickedButton = e.target.value;
+            if (clickedButton === 'clear') {
+                mem[0] = '';
+            } else if (clickedButton === 'add') {
+                if (mem[0] === ''){
+                    mem[0] = document.getElementById('display').value;
+                } else {
+                    mem[0] = Number(mem[0]) + Number(document.getElementById('display').value);
+                };
+            } else if (clickedButton === 'subtract') {
+                mem[0] = Number(mem[0]) - document.getElementById('display').value;
+            } else if (clickedButton === 'recall') { 
+                if (mem[0] === '') {
+                    console.log("Tis blank Milord");
+                } else if (val[1] === '') {
+                    val[0] = mem[0]
+                    document.getElementById('display').value = `${val[0]}`;
+                } else if(val[2] === '') {
+                    document.getElementById('display').value = '';
+                    val[2] = mem[0];
+                    document.getElementById('display').value = `${val[2]}`;
+                } else {
+                    val[2] = mem[0]
+                    document.getElementById('display').value = `${val[2]}`;
+                };
+            };
+        });
+    };
 
     const val = ['','',''];
 
     for (const numbers of number){ 
         numbers.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
+        if(val[3] === 'yes'){ 
+            val[3] = ''; 
+            document.getElementById('display').value = ''; 
+        } 
         if (val[1] === '') {
             let value = document.querySelector('input').value;
             val[0] = `${value}${clickedButton}`
@@ -61,8 +99,8 @@ window.onload = function() {
     });
     };
 
-    for (const operatorsB of operatorB){ 
-        operatorsB.addEventListener('click', function(e) {
+    for (const operators1 of operator1){ 
+        operators1.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
         if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
             val[0] = operator(val[0],val[2],val[1]);
@@ -81,6 +119,7 @@ window.onload = function() {
             document.getElementById('display').value = `${val[0]}`;
             val[1] = '';
             val[2] = '';
+            val[3] = 'yes'; 
             console.log(val[0]);
     };
    });
@@ -106,6 +145,7 @@ window.onload = function() {
         val[0] = '';
         val[1] = '';
         val[2] = '';
+        val[3] = ''; 
     });
 
 }
