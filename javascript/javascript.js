@@ -1,10 +1,5 @@
 window.onload = function() {
 
-    function clearPage() {
-        document.getElementById('display').value = "";
-    } 
-    clearPage ();
-
     const clear = document.querySelector("#clear");
     const equal = document.querySelector("#equal");
     const number = document.querySelectorAll(".number");
@@ -12,27 +7,48 @@ window.onload = function() {
     const operator2 = document.querySelectorAll(".operator2");
     const memory = document.querySelectorAll(".memory");
     const power = document.querySelectorAll(".power");
+    const decimal = document.querySelector(".decimal");
+    const display = document.getElementById("display");
 
     const mem = [''];
-    const val = ['','','',''];
+
+    const equation = {
+        integer1: '',
+        operator: '',
+        integer2: '',
+        equal: '',
+        memory:''
+    }
+
+    //Look into using an object / key:value pairing so its more readable -Bryce-
+    //Write your code as if you have amnesia
+
+    //Clear the page initially
+
+    function clearPage() {
+        display.value = "";
+    } 
+    clearPage ();
 
     //Power Buttons
 
     for (const powerButtons of power) {
         powerButtons.addEventListener('click', function(e) {
             const clickedButton = e.target.value;
-            val[0] = '';
-            val[1] = '';
-            val[2] = '';
-            val[3] = '';
-            mem[0] = '';
+            equation.integer1 = '';
+            equation.operator = '';
+            equation.integer2 = '';
+            equation.equal = '';
+            equation.memory = '';
             if (clickedButton === 'on') {
-                document.getElementById('display').classList.add('on');
-                document.getElementById('display').classList.remove('off');
-                document.getElementById('display').value = '';
+                display.classList.add('on');
+                display.classList.remove('off');
+                display.value = '';
             } else {
-                document.getElementById('display').classList.add('off');
-                document.getElementById('display').classList.remove('on');
+                display.classList.add('off');
+                display.classList.remove('on');
+                display.value = '';
+                //display.setAttribute('disabled',true) = '';
             };
         });
     };
@@ -43,28 +59,28 @@ window.onload = function() {
         memories.addEventListener('click', function(e) {
             const clickedButton = e.target.value;
             if (clickedButton === 'clear') {
-                mem[0] = '';
+                equation.memory = '';
             } else if (clickedButton === 'add') {
-                if (mem[0] === ''){
-                    mem[0] = document.getElementById('display').value;
+                if (equation.memory === ''){
+                    equation.memory = display.value;
                 } else {
-                    mem[0] = Number(mem[0]) + Number(document.getElementById('display').value);
+                    equation.memory = Number(equation.memory) + Number(display.value);
                 };
             } else if (clickedButton === 'subtract') {
-                mem[0] = Number(mem[0]) - document.getElementById('display').value;
+                equation.memory = Number(equation.memory) - display.value;
             } else if (clickedButton === 'recall') { 
-                if (mem[0] === '') {
+                if (equation.memory === '') {
                     console.log("Tis blank Milord");
-                } else if (val[1] === '') {
-                    val[0] = mem[0]
-                    document.getElementById('display').value = `${val[0]}`;
-                } else if(val[2] === '') {
-                    document.getElementById('display').value = '';
-                    val[2] = mem[0];
-                    document.getElementById('display').value = `${val[2]}`;
+                } else if (equation.operator === '') {
+                    equation.integer1 = equation.memory
+                    display.value = `${equation.integer1}`;
+                } else if(equation.integer2 === '') {
+                    display.value = '';
+                    equation.integer2 = equation.memory;
+                    display.value = `${equation.integer2}`;
                 } else {
-                    val[2] = mem[0]
-                    document.getElementById('display').value = `${val[2]}`;
+                    equation.integer2 = equation.memory
+                    display.value = `${equation.integer2}`;
                 };
             };
         });
@@ -75,40 +91,48 @@ window.onload = function() {
     for (const numbers of number){ 
         numbers.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
-        if(val[3] === 'yes'){ 
-            val[3] = ''; 
-            document.getElementById('display').value = ''; 
+        if(equation.equal === 'yes'){ 
+            equation.equal = ''; 
+            display.value = ''; 
         } 
-        if (val[1] === '') {
-            let value = document.querySelector('input').value;
-            val[0] = `${value}${clickedButton}`
-            document.getElementById('display').value = `${val[0]}`;
-        } else if(val[2] === '') {
-            document.getElementById('display').value = '';
-            val[2] = clickedButton;
-            document.getElementById('display').value = `${val[2]}`;
+        if (equation.operator === '') {
+            let value = display.value;
+            equation.integer1 = `${value}${clickedButton}`
+            display.value = `${equation.integer1}`;
+        } else if(equation.integer2 === '') {
+            display.value = '';
+            equation.integer2 = clickedButton;
+            display.value = `${equation.integer2}`;
         } else {
             let value2 = clickedButton;
-            val[2] = `${value2}${clickedButton}`
-            document.getElementById('display').value = `${val[2]}`;
+            equation.integer2 = `${value2}${clickedButton}`
+            display.value = `${equation.integer2}`;
         };
     });
     };
 
     //decimal button
 
+    decimal.addEventListener('click', function(e){
+        const display = display.value;
+        console.log(display);
+        if (display === ''){
+            //let return value of 0.1 as equation.operator
+        }
+    });
+
     //operators affecting equation (+, -, /, *)
 
     for (const operators1 of operator1){ 
         operators1.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
-        if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[2],val[1]);
-            document.getElementById('display').value = `${val[0]}`;
-            val[1] = clickedButton;
-            val[2] = '';
-        } else if (val [0] !== '') {
-            val[1] = clickedButton;
+        if (equation.integer1 !== '' && equation.operator !== '' && equation.integer2 !== '') {
+            equation.integer1 = operator(equation.integer1,equation.integer2,equation.operator);
+            display.value = `${equation.integer1}`;
+            equation.operator = clickedButton;
+            equation.integer2 = '';
+        } else if (equation.integer1 !== '') {
+            equation.operator = clickedButton;
         };
         });
     }; 
@@ -118,28 +142,28 @@ window.onload = function() {
     for (const operators2 of operator2){ 
         operators2.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
-        if (val[1] === '') {
+        if (equation.operator === '') {
           if (clickedButton === "percent") {
-            val[0] = val[0]/100;
+            equation.integer1 = equation.integer1 / 100;
           };
           if (clickedButton === "square") {
-            val[0] = val[0] ** (1/2);
+            equation.integer1 = equation.integer1 ** (1/2);
           };
           if (clickedButton === "signChange") {
-            val[0] = val[0] * -1;
+            equation.integer1 = equation.integer1 * -1;
           };
-          document.getElementById('display').value = val[0];
+          display.value = equation.integer1;
         } else {
             if (clickedButton === "percent") {
-                val[2] = val[2]/100;
+                equation.integer2 = equation.integer2/100;
               };
               if (clickedButton === "square") {
-                val[2] = val[2] ** (0.5);
+                equation.integer2 = equation.integer2 ** (0.5);
               };
               if (clickedButton === "signChange") {
-                val[2] = val[2] * -1;
+                equation.integer2 = equation.integer2 * -1;
               };
-              document.getElementById('display').value = val[2];
+              display.value = equation.integer2;
         };
     });
     };
@@ -147,13 +171,13 @@ window.onload = function() {
    //Equal sign 
     
    equal.addEventListener('click', ()=> {
-    if (val[0] !== '' && val[1] !== '' && val[2] !== '') {
-            val[0] = operator(val[0],val[2],val[1])
-            document.getElementById('display').value = `${val[0]}`;
-            val[1] = '';
-            val[2] = '';
-            val[3] = 'yes'; 
-            console.log(val[0]);
+    if (equation.integer1 !== '' && equation.operator !== '' && equation.integer2 !== '') {
+        equation.integer1 = operator(equation.integer1,equation.integer2,equation.operator)
+            display.value = `${equation.integer1}`;
+            equation.operator = '';
+            equation.integer2 = '';
+            equation.equal = 'yes'; 
+            console.log(equation.integer1);
     };
    });
 
@@ -178,10 +202,10 @@ window.onload = function() {
     //Clear Button
 
     clear.addEventListener('click', () => {
-        document.getElementById('display').value = "";
-        val[0] = '';
-        val[1] = '';
-        val[2] = '';
-        val[3] = ''; 
+        display.value = "";
+        equation.integer1 = '';
+        equation.operator = '';
+        equation.integer2 = '';
+        equation.equal = ''; 
     });
 }
