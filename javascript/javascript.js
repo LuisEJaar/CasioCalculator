@@ -118,11 +118,13 @@ window.onload = function() {
     //decimal button
 
     decimal.addEventListener('click', function(e){
-        const display = display.value;
-        console.log(display);
-        if (display === ''){
-            //let return value of 0.1 as equation.operator
-        }
+        const value = display.value;
+        console.log(value.search('.'));
+        if (value === ''){
+            display.value = `0.`;
+        } else if (value.search(/\./) === -1) {
+            display.value = `${value}.`;
+        };
     });
 
     //operators affecting equation (+, -, /, *)
