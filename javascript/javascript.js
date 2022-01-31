@@ -10,18 +10,14 @@ window.onload = function() {
     const decimal = document.querySelector(".decimal");
     const display = document.getElementById("display");
 
-    const mem = [''];
-
     const equation = {
         integer1: '',
         operator: '',
         integer2: '',
         equal: '',
-        memory:''
+        memory:'',
+        syspower:'on'
     }
-
-    //Look into using an object / key:value pairing so its more readable -Bryce-
-    //Write your code as if you have amnesia
 
     //Clear the page initially
 
@@ -44,11 +40,12 @@ window.onload = function() {
                 display.classList.add('on');
                 display.classList.remove('off');
                 display.value = '';
+                equation.syspower = 'on';
             } else {
                 display.classList.add('off');
                 display.classList.remove('on');
                 display.value = '';
-                //display.setAttribute('disabled',true) = '';
+                equation.syspower = 'off';
             };
         });
     };
@@ -58,9 +55,13 @@ window.onload = function() {
     for (const memories of memory) {
         memories.addEventListener('click', function(e) {
             const clickedButton = e.target.value;
+            if (equation.operator === ''){
+                equation.equal = 'yes';
+            };
             if (clickedButton === 'clear') {
                 equation.memory = '';
             } else if (clickedButton === 'add') {
+                
                 if (equation.memory === ''){
                     equation.memory = display.value;
                 } else {
@@ -70,7 +71,8 @@ window.onload = function() {
                 equation.memory = Number(equation.memory) - display.value;
             } else if (clickedButton === 'recall') { 
                 if (equation.memory === '') {
-                    console.log("Tis blank Milord");
+                    display.value = "Tis blank Milord";
+                    equation.equal = 'yes';
                 } else if (equation.operator === '') {
                     equation.integer1 = equation.memory
                     display.value = `${equation.integer1}`;
@@ -91,23 +93,25 @@ window.onload = function() {
     for (const numbers of number){ 
         numbers.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
-        if(equation.equal === 'yes'){ 
-            equation.equal = ''; 
-            display.value = ''; 
-        } 
-        if (equation.operator === '') {
-            let value = display.value;
-            equation.integer1 = `${value}${clickedButton}`
-            display.value = `${equation.integer1}`;
-        } else if(equation.integer2 === '') {
-            display.value = '';
-            equation.integer2 = clickedButton;
-            display.value = `${equation.integer2}`;
-        } else {
-            let value2 = clickedButton;
-            equation.integer2 = `${value2}${clickedButton}`
-            display.value = `${equation.integer2}`;
-        };
+        if (equation.syspower === 'on'){
+            if(equation.equal === 'yes'){ 
+                equation.equal = ''; 
+                display.value = ''; 
+            } 
+            if (equation.operator === '') {
+                let value = display.value;
+                equation.integer1 = `${value}${clickedButton}`
+                display.value = `${equation.integer1}`;
+            } else if(equation.integer2 === '') {
+                display.value = '';
+                equation.integer2 = clickedButton;
+                display.value = `${equation.integer2}`;
+            } else {
+                let value2 = clickedButton;
+                equation.integer2 = `${value2}${clickedButton}`
+                display.value = `${equation.integer2}`;
+            };
+        }
     });
     };
 
