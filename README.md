@@ -1,6 +1,10 @@
+Original project based on creating a calculator to the Odin Project specifications provided. 
+
+Personal project to modify provided specifications in order to reflect the nostalgic calculators that I great up using. Specifically the Casio SL-300SV
+
+
+
 # OdinProjectCalculator
-
-
 
 Here are some use cases (abilities your project needs to have):
 
@@ -29,5 +33,3 @@ Here are some use cases (abilities your project needs to have):
     EXTRA CREDIT: Make it look nice! This is a great project to practice your CSS skills. At least make the operations a different color from the keypad buttons.
     EXTRA CREDIT: Add a “backspace” button, so the user can undo if they click the wrong number.
     EXTRA CREDIT: Add keyboard support!
-
-
