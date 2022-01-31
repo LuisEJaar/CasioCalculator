@@ -14,9 +14,9 @@ window.onload = function() {
         integer1: '',
         operator: '',
         integer2: '',
-        equal: '',
+        equal: '',      // =, M+, M- to clear dispaly on pressing next number
         memory:'',
-        syspower:'on'
+        syspower:'on'   
     }
 
     //Clear the page initially

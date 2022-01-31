@@ -60,14 +60,14 @@ input {
     color: white;
 }
 
-.row1 {
-    display: flex;
-    align-items: center;
-}
-
 .topButtons {
     display: flex; 
     margin-left: auto;
+}
+
+.row1 {
+    display: flex;
+    align-items: center;
 }
 
 .rows1to5 {
