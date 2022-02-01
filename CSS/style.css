@@ -1,107 +1,243 @@
-.calculatorBody{
-    background-color: rgb(192 200 206);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-width: 400px;
-    max-width: 400px;
-    border: 2mm double black;
-    padding: 2mm;
-    margin-left: 30%;
-    margin-top: 10%;
+@media screen and (max-width: 600px) {
+    .calculatorBody{
+        background-color: rgb(192 200 206);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-width: 90%;
+        border: 2mm double black;
+        padding: 1mm;
+        margin: 1px;
+        flex-shrink: 1;
+    }
+
+    header {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        display: flex;
+        margin-bottom: 7%;
+    }
+    
+    header span {
+        font-size: 80%;
+    }
+    
+    .solar {
+        display: flex;
+        background-color: rgb(46 35 33);
+        border: 2mm double rgb(120 123 132);
+        height: 40px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .power {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        flex-shrink: 1;
+    }
+
+    .display {
+        display: flex;
+    }
+    
+    input {
+        height: 40px;
+        margin-bottom: 20px;
+        width: 100%;
+        border: 3mm solid rgb(120 123 132);
+        border-radius: 4mm;
+        font-family: 'Orbitron', sans-serif;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 4px;
+        text-align: right;
+    }
+    
+    .on {
+        color: black;
+    }
+    
+    .off {
+        color: rgb(117 125 138);
+    }
+    
+    .buttonArea {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+        width: 90%;
+    }
+
+    .topButtons {
+        display: flex; 
+        margin-left: auto;
+        width: 50%;
+    }
+    
+    .row1 {
+        display: flex;
+        align-items: center;
+    }
+    
+    .rows1to5 {
+        display: flex;
+        flex-shrink: 1;
+        width: 100%;
+        column-gap: 2%;
+    }
+    
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+    }
+    
+    button {
+        display: flex;
+        background-color: rgb(57 61 70);
+        align-items: center;
+        justify-content: center;
+        color: white;
+        width: 100%;
+        margin: 5%;
+        border-radius: 7px;
+        font-size: 140%;
+        font-weight: bold;
+    }
+
+    button:active {
+        background-color: rgb(119 129 140);
+    }
+    
+    .plusButton {
+        flex-grow: 2;
+    }
+    
+    .variant {
+        background-color: rgb(179 11 138);
+    }
+    
+    .variant:active {
+        background-color: rgb(174 113 137);
+    }
+} 
+
+@media screen and (min-width: 601px) {
+    .calculatorBody{
+        background-color: rgb(192 200 206);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-width: 400px;
+        max-width: 400px;
+        border: 2mm double black;
+        padding: 2mm;
+        margin-left: 30%;
+        margin-top: 10%;
+    }
+    header {
+        width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        margin-bottom: 20px;
+    }
+    
+    header span {
+        font-size: 8px;
+    }
+    
+    .solar {
+        background-color: rgb(46 35 33);
+        border: 2mm double rgb(120 123 132);
+        height: 30px;
+        width: 150px;
+        border-radius: 10px;
+    }
+    
+    .power {
+        text-align: center;
+    }
+    
+    input {
+        height: 40px;
+        margin-bottom: 20px;
+        width: 350px;
+        border: 3mm solid rgb(120 123 132);
+        border-radius: 4mm;
+        font-family: 'Orbitron', sans-serif;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 4px;
+        text-align: right;
+    }
+    
+    .on {
+        color: black;
+    }
+    
+    .off {
+        color: rgb(117 125 138);
+    }
+    
+    .topButtons {
+        display: flex; 
+        margin-left: auto;
+    }
+    
+    .row1 {
+        display: flex;
+        align-items: center;
+    }
+    
+    .rows1to5 {
+        display: flex;
+    }
+    
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    button {
+        background-color: rgb(57 61 70);
+        color: white;
+        width: 68px;
+        margin: 3px;
+        border-radius: 7px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+    
+    button:active {
+        background-color: rgb(119 129 140);
+    }
+    
+    .plusButton {
+        flex-grow: 2;
+    }
+    
+    .variant {
+        background-color: rgb(179 11 138);
+    }
+    
+    .variant:active {
+        background-color: rgb(174 113 137);
+    }
+    
 }
 
-header {
-    width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.logo {
-    margin-bottom: 20px;
-}
-
-header span {
-    font-size: 8px;
-}
-
-.solar {
-    background-color: rgb(46 35 33);
-    border: 2mm double rgb(120 123 132);
-    height: 30px;
-    width: 150px;
-    border-radius: 10px;
-}
-
-.power {
-    text-align: center;
-}
-
-input {
-    height: 40px;
-    margin-bottom: 20px;
-    width: 350px;
-    border: 3mm solid rgb(120 123 132);
-    border-radius: 4mm;
-    font-family: 'Orbitron', sans-serif;
-    text-align: right;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 4px;
-    text-align: right;
-}
-
-.on {
-    color: black;
-}
-
-.off {
-    color: rgb(117 125 138);
-}
-
-.topButtons {
-    display: flex; 
-    margin-left: auto;
-}
-
-.row1 {
-    display: flex;
-    align-items: center;
-}
-
-.rows1to5 {
-    display: flex;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-button {
-    background-color: rgb(57 61 70);
-    color: white;
-    width: 68px;
-    margin: 3px;
-    border-radius: 7px;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-button:active {
-    background-color: rgb(119 129 140);
-}
-
-.plusButton {
-    flex-grow: 2;
-}
-
-.variant {
-    background-color: rgb(179 11 138);
-}
-
-.variant:active {
-    background-color: rgb(174 113 137);
-}
 
