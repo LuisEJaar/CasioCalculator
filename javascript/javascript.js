@@ -148,7 +148,9 @@ window.onload = function() {
     for (const operators2 of operator2){ 
         operators2.addEventListener('click', function(e) {
         const clickedButton = e.target.value;
-        if (equation.operator === '') {
+        if (display.value === ''){
+
+        } else if (equation.operator === '') {
           if (clickedButton === "percent") {
             equation.integer1 = equation.integer1 / 100;
           };
@@ -159,7 +161,7 @@ window.onload = function() {
             equation.integer1 = equation.integer1 * -1;
           };
           display.value = equation.integer1;
-        } else {
+        } else if (equation.integer2 !== '') {
             if (clickedButton === "percent") {
                 equation.integer2 = equation.integer2/100;
               };
