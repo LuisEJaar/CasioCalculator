@@ -107,7 +107,6 @@ window.onload = function() {
                 equation.integer2 = clickedButton;
                 display.value = `${equation.integer2}`;
             } else {
-                console.log("this");
                 let value2 = display.value;
                 equation.integer2 = `${value2}${clickedButton}`
                 display.value = `${equation.integer2}`;
