@@ -3,7 +3,7 @@ This project had the goal of recreating the form and functionality of an old cas
 
 **Link to project:** https://luisejaar.github.io/OdinProjectCalculator/
 
-![Calculator Image](https://github.com/LuisEJaar/OdinProjectCalculator/assets/CalculatorImg.jpg?raw=true)
+<img src="/assets/CalculatorImg.jpg" alt="drawing" width="300"/>
 
 ## How It's Made:
 **Tech used:** HTML, CSS, JavaScript
