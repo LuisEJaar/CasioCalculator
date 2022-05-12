@@ -2,7 +2,8 @@
 This project had the goal of recreating the form and functionality of an old casio calculator. Feel free to play around and I hope you enjoy the nostalgia. It was really fun incorporating the on / off and memory buttons. Its interesting how these sort of ate numbers in certain scenarios and that was non-intuitive but fun to add. 
 
 **Link to project:** https://luisejaar.github.io/OdinProjectCalculator/
-<img src="">![alt tag](https://luisejaar.github.io/OdinProjectCalculator/)
+
+![Calculator Image](https://github.com/LuisEJaar/OdinProjectCalculator/assets/CalculatorImg.jpg?raw=true)
 
 ## How It's Made:
 **Tech used:** HTML, CSS, JavaScript
